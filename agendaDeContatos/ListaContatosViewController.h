@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ContatoDao.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ListaContatosViewController : UITableViewController
+
+@property ContatoDao *dao;
 
 @end
 

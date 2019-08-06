@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		773651FB22F9FD2E00BDA68D /* ContatoDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 773651FA22F9FD2E00BDA68D /* ContatoDao.m */; };
 		FD28902322F904350099D434 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FD28902222F904350099D434 /* AppDelegate.m */; };
 		FD28902622F904350099D434 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD28902522F904350099D434 /* ViewController.m */; };
 		FD28902922F904350099D434 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD28902722F904350099D434 /* Main.storyboard */; };
@@ -20,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		773651F922F9FD2E00BDA68D /* ContatoDao.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContatoDao.h; sourceTree = "<group>"; };
+		773651FA22F9FD2E00BDA68D /* ContatoDao.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContatoDao.m; sourceTree = "<group>"; };
 		FD28901E22F904350099D434 /* agendaDeContatos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = agendaDeContatos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD28902122F904350099D434 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FD28902222F904350099D434 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -83,6 +86,8 @@
 				FD28903222F904360099D434 /* Info.plist */,
 				FD28903322F904360099D434 /* main.m */,
 				FD28902A22F904350099D434 /* agendaDeContatos.xcdatamodeld */,
+				773651F922F9FD2E00BDA68D /* ContatoDao.h */,
+				773651FA22F9FD2E00BDA68D /* ContatoDao.m */,
 			);
 			path = agendaDeContatos;
 			sourceTree = "<group>";
@@ -158,6 +163,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				773651FB22F9FD2E00BDA68D /* ContatoDao.m in Sources */,
 				FDD6E94822F90B0E007BC446 /* Contato.m in Sources */,
 				FDD6E94B22F911B8007BC446 /* ListaContatosViewController.m in Sources */,
 				FD28902C22F904350099D434 /* agendaDeContatos.xcdatamodeld in Sources */,

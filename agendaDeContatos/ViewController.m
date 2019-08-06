@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "Contato.h"
+
 @interface ViewController ()
 
 @end
@@ -20,6 +21,8 @@
         UIBarButtonItem *botao = [[UIBarButtonItem alloc] initWithTitle:@"Adiciona" style:UIBarButtonItemStylePlain target:self action:@selector(adiciona)];
         self.navigationItem.rightBarButtonItem = botao;
         self.navigationItem.title = @"Novo Contato";
+        self.dao = [ContatoDao contatoDaoInstance];
+        
     }
     return self;
 }
@@ -38,7 +41,9 @@
     contato.site = self.site.text;
 
     
-    NSLog(@"Clicou no botão, %@ %@ %@ %@ %@)", contato.nome,contato.endereco,contato.email,contato.telefone,contato.site);
+    [self.dao adicionaContato:contato];
+    
+    NSLog(@"Clicou no botão, %@ )", self.dao.contatos);
     [self.navigationController popViewControllerAnimated:YES];
 }
 
