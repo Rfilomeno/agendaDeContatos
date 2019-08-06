@@ -9,6 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "ContatoDao.h"
 
+@protocol ViewControllerDelegate <NSObject>
+
+-(void)contatoAdicionado:(Contato *) contato;
+-(void)contatoAtualizado:(Contato *) contato;
+
+@end
+
 @interface ViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UITextField *nome;
@@ -18,6 +25,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *site;
 
 @property ContatoDao *dao;
+@property Contato *contato;
+@property id<ViewControllerDelegate> delegate;
 
 @end
 

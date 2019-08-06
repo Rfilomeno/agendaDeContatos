@@ -17,6 +17,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(void) adicionaContato: (Contato *) contato;
 
+-(void) removeContato: (Contato *) contato;
+
+-(NSInteger) indiceDoContato: (Contato *) contato;
+
 -(NSInteger)total;
 
 -(Contato *) contatoDoIndice:(NSInteger) indice;

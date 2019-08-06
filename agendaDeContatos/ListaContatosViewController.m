@@ -7,7 +7,6 @@
 //
 
 #import "ListaContatosViewController.h"
-#import "ViewController.h"
 #import "Contato.h"
 
 
@@ -20,16 +19,37 @@
         UIBarButtonItem *botaoForm = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(exibeFormulario)];
         
         self.navigationItem.rightBarButtonItem = botaoForm;
+        self.navigationItem.leftBarButtonItem = self.editButtonItem;
+        
         self.navigationItem.title = @"Contatos";
         self.dao = [ContatoDao contatoDaoInstance];
     }
     return self;
 }
 
+-(void) tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (editingStyle == UITableViewCellEditingStyleDelete){
+        Contato *contato = [self.dao contatoDoIndice:indexPath.row];
+        [self.dao removeContato: contato];
+        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }
+}
+
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    self.contatoSelecionado = [self.dao contatoDoIndice:indexPath.row];
+    
+    [self exibeFormulario];
+}
+
 -(void)exibeFormulario{
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     ViewController *form = [storyboard instantiateViewControllerWithIdentifier:@"Form-Contato"];
-    form.dao = self.dao;
+    form.delegate = self;
+    if (self.contatoSelecionado){
+        form.contato = self.contatoSelecionado;
+    }
+    self.contatoSelecionado = nil;
+    
     
     [self.navigationController pushViewController:form animated:YES];
 }
@@ -55,5 +75,18 @@
 -(void)viewWillAppear:(BOOL)animated{
     [self.tableView reloadData];
 }
+
+-(void)contatoAdicionado: (Contato *)contato{
+    self.linhaSelecionada = [self.dao indiceDoContato:contato];
+}
+-(void)contatoAtualizado: (Contato *)contato{
+    self.linhaSelecionada = [self.dao indiceDoContato:contato];
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.linhaSelecionada inSection:0];
+    [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
+}
+
 
 @end
