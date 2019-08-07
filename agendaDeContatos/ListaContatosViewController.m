@@ -78,6 +78,12 @@
 
 -(void)contatoAdicionado: (Contato *)contato{
     self.linhaSelecionada = [self.dao indiceDoContato:contato];
+    NSString *mensagem = [NSString stringWithFormat:@"Contato %@ adicionado com sucesso.", contato.nome];
+
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Contato Adicionado" message:mensagem preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
+    [alert addAction:ok];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 -(void)contatoAtualizado: (Contato *)contato{
     self.linhaSelecionada = [self.dao indiceDoContato:contato];
@@ -86,6 +92,7 @@
 -(void)viewDidAppear:(BOOL)animated{
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.linhaSelecionada inSection:0];
     [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
+    self.linhaSelecionada = -1;
 }
 
 

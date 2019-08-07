@@ -52,10 +52,10 @@
     [self pegaDadosDoFormulario];
 
     [self.dao adicionaContato:self.contato];
-    
+    [self.navigationController popViewControllerAnimated:YES];
     [self.delegate contatoAdicionado: self.contato];
     
-    [self.navigationController popViewControllerAnimated:YES];
+    
 }
 
 -(void)altera{
